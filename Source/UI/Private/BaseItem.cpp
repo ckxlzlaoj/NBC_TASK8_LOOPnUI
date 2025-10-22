@@ -6,23 +6,23 @@ ABaseItem::ABaseItem()
 {
     PrimaryActorTick.bCanEverTick = false;
 
-    // ·çÆ® ÄÄÆ÷³ÍÆ® »ý¼º ¹× ¼³Á¤
+    // ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     Scene = CreateDefaultSubobject<USceneComponent>(TEXT("Scene"));
     SetRootComponent(Scene);
 
-    // Ãæµ¹ ÄÄÆ÷³ÍÆ® »ý¼º ¹× ¼³Á¤
+    // ï¿½æµ¹ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     Collision = CreateDefaultSubobject<USphereComponent>(TEXT("Collision"));
-    // °ãÄ§¸¸ °¨ÁöÇÏ´Â ÇÁ·ÎÆÄÀÏ ¼³Á¤
+    // ï¿½ï¿½Ä§ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     Collision->SetCollisionProfileName(TEXT("OverlapAllDynamic"));
-    // ·çÆ® ÄÄÆ÷³ÍÆ®·Î ¼³Á¤
+    // ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     Collision->SetupAttachment(Scene);
 
-    // ½ºÅÂÆ½ ¸Þ½Ã ÄÄÆ÷³ÍÆ® »ý¼º ¹× ¼³Á¤
+    // ï¿½ï¿½ï¿½ï¿½Æ½ ï¿½Þ½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
     StaticMesh->SetupAttachment(Collision);
-    // ¸Þ½Ã°¡ ºÒÇÊ¿äÇÏ°Ô Ãæµ¹À» ¸·Áö ¾Êµµ·Ï ÇÏ±â À§ÇØ, º°µµ·Î NoCollision µîÀ¸·Î ¼³Á¤ÇÒ ¼ö ÀÖÀ½.
+    // ï¿½Þ½Ã°ï¿½ ï¿½ï¿½ï¿½Ê¿ï¿½ï¿½Ï°ï¿½ ï¿½æµ¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Êµï¿½ï¿½ï¿½ ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ NoCollision ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 
-// Overlap ÀÌº¥Æ® ¹ÙÀÎµù
+// Overlap ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½Îµï¿½
     Collision->OnComponentBeginOverlap.AddDynamic(this, &ABaseItem::OnItemOverlap);
     Collision->OnComponentEndOverlap.AddDynamic(this, &ABaseItem::OnItemEndOverlap);
 }
@@ -35,11 +35,11 @@ void ABaseItem::OnItemOverlap(
     bool bFromSweep,
     const FHitResult& SweepResult)
 {
-    // OtherActor°¡ ÇÃ·¹ÀÌ¾îÀÎÁö È®ÀÎ ("Player" ÅÂ±× È°¿ë)
+    // OtherActorï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ ("Player" ï¿½Â±ï¿½ È°ï¿½ï¿½)
     if (OtherActor && OtherActor->ActorHasTag("Player"))
     {
         GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("Overlap!!!")));
-        // ¾ÆÀÌÅÛ »ç¿ë (È¹µæ) ·ÎÁ÷ È£Ãâ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (È¹ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½
         ActivateItem(OtherActor);
     }
 }

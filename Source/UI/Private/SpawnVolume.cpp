@@ -15,15 +15,18 @@ ASpawnVolume::ASpawnVolume()
     ItemDataTable = nullptr;
 }
 
-void ASpawnVolume::SpawnRandomItem()
+AActor* ASpawnVolume::SpawnRandomItem()
 {
     if (FItemSpawnRow* SelectedRow = GetRandomItem())
     {
         if (UClass* ActualClass = SelectedRow->ItemClass.Get())
         {
-            SpawnItem(ActualClass);
+            // ì—¬ê¸°ì„œ SpawnItem()ì„ í˜¸ì¶œí•˜ê³ , ìŠ¤í°ëœ AActor í¬ì¸í„°ë¥¼ ë¦¬í„´
+            return SpawnItem(ActualClass);
         }
     }
+
+    return nullptr;
 }
 
 FVector ASpawnVolume::GetRandomPointInVolume() const
@@ -42,28 +45,28 @@ FItemSpawnRow* ASpawnVolume::GetRandomItem() const
 {
     if (!ItemDataTable) return nullptr;
 
-    // 1) ¸ğµç Row(Çà) °¡Á®¿À±â
+    // 1) ï¿½ï¿½ï¿½ Row(ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     TArray<FItemSpawnRow*> AllRows;
     static const FString ContextString(TEXT("ItemSpawnContext"));
     ItemDataTable->GetAllRows(ContextString, AllRows);
 
     if (AllRows.IsEmpty()) return nullptr;
 
-    // 2) ÀüÃ¼ È®·ü ÇÕ ±¸ÇÏ±â
-    float TotalChance = 0.0f; // ÃÊ±âÈ­
-    for (const FItemSpawnRow* Row : AllRows) // AllRows ¹è¿­ÀÇ °¢ Row¸¦ ¼øÈ¸
+    // 2) ï¿½ï¿½Ã¼ È®ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
+    float TotalChance = 0.0f; // ï¿½Ê±ï¿½È­
+    for (const FItemSpawnRow* Row : AllRows) // AllRows ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ Rowï¿½ï¿½ ï¿½ï¿½È¸
     {
-        if (Row) // Row°¡ À¯È¿ÇÑÁö È®ÀÎ
+        if (Row) // Rowï¿½ï¿½ ï¿½ï¿½È¿ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
         {
-            TotalChance += Row->SpawnChance; // SpawnChance °ªÀ» TotalChance¿¡ ´õÇÏ±â
+            TotalChance += Row->SpawnChance; // SpawnChance ï¿½ï¿½ï¿½ï¿½ TotalChanceï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
         }
     }
 
-    // 3) 0 ~ TotalChance »çÀÌ ·£´ı °ª
+    // 3) 0 ~ TotalChance ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     const float RandValue = FMath::FRandRange(0.0f, TotalChance);
     float AccumulateChance = 0.0f;
 
-    // 4) ´©Àû È®·ü·Î ¾ÆÀÌÅÛ ¼±ÅÃ
+    // 4) ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     for (FItemSpawnRow* Row : AllRows)
     {
         AccumulateChance += Row->SpawnChance;
@@ -76,13 +79,16 @@ FItemSpawnRow* ASpawnVolume::GetRandomItem() const
     return nullptr;
 }
 
-void ASpawnVolume::SpawnItem(TSubclassOf<AActor> ItemClass)
+AActor* ASpawnVolume::SpawnItem(TSubclassOf<AActor> ItemClass)
 {
-    if (!ItemClass) return;
+    if (!ItemClass) return nullptr;
 
-    GetWorld()->SpawnActor<AActor>(
+    // SpawnActorê°€ ì„±ê³µí•˜ë©´ ìŠ¤í°ëœ ì•¡í„°ì˜ í¬ì¸í„°ê°€ ë°˜í™˜ë¨
+    AActor* SpawnedActor = GetWorld()->SpawnActor<AActor>(
         ItemClass,
         GetRandomPointInVolume(),
         FRotator::ZeroRotator
     );
+
+    return SpawnedActor;
 }

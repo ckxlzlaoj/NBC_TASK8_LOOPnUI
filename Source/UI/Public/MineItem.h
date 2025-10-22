@@ -20,17 +20,17 @@ public:
     USphereComponent* ExplosionCollision;
 
 
-    // Æø¹ß±îÁö °É¸®´Â ½Ã°£ (5ÃÊ)
+    // ï¿½ï¿½ï¿½ß±ï¿½ï¿½ï¿½ ï¿½É¸ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ (5ï¿½ï¿½)
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Mine")
     float ExplosionDelay;
-    // Æø¹ß ¹üÀ§
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Mine")
     float ExplosionRadius;
-    // Æø¹ß µ¥¹ÌÁö
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Mine")
     float ExplosionDamage;
 
-    // Áö·Ú ¹ßµ¿ ¿©ºÎ
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ßµï¿½ ï¿½ï¿½ï¿½ï¿½
     FTimerHandle ExplosionTimerHandle;
 
     virtual void ActivateItem(AActor* Activator) override;

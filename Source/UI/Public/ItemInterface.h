@@ -19,21 +19,21 @@ class UItemInterface : public UInterface
 class UI_API IItemInterface
 {
 	GENERATED_BODY()
-    // ÇÃ·¹ÀÌ¾î°¡ ÀÌ ¾ÆÀÌÅÛÀÇ ¹üÀ§¿¡ µé¾î¿ÔÀ» ¶§ È£Ãâ
+    // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½
     virtual void OnItemOverlap(UPrimitiveComponent* OverlappedComp,
 		AActor* OtherActor,
 		UPrimitiveComponent* OtherComp,
 		int32 OtherBodyIndex,
 		bool bFromSweep,
 		const FHitResult& SweepResult) = 0;
-    // ÇÃ·¹ÀÌ¾î°¡ ÀÌ ¾ÆÀÌÅÛÀÇ ¹üÀ§¸¦ ¹þ¾î³µÀ» ¶§ È£Ãâ
+    // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î³µï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½
     virtual void OnItemEndOverlap(UPrimitiveComponent* OverlappedComp,
 		AActor* OtherActor,
 		UPrimitiveComponent* OtherComp,
 		int32 OtherBodyIndex) = 0;
-    // ¾ÆÀÌÅÛÀÌ »ç¿ëµÇ¾úÀ» ¶§ È£Ãâ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½
     virtual void ActivateItem(AActor* Activator) = 0;
-    // ÀÌ ¾ÆÀÌÅÛÀÇ À¯Çü(Å¸ÀÔ)À» ¹ÝÈ¯ (¿¹: "Coin", "Mine" µî)
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(Å¸ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½È¯ (ï¿½ï¿½: "Coin", "Mine" ï¿½ï¿½)
     virtual FName GetItemType() const = 0;
 
 

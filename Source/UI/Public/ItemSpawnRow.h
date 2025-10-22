@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "CoreMinimal.h"
-#include "Engine/DataTable.h" // FTableRowBase Á¤ÀÇ°¡ µé¾îÀÖ´Â Çì´õ
+#include "Engine/DataTable.h" // FTableRowBase ï¿½ï¿½ï¿½Ç°ï¿½ ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½
 #include "ItemSpawnRow.generated.h"
 
 USTRUCT(BlueprintType)
@@ -9,13 +9,13 @@ struct FItemSpawnRow : public FTableRowBase
     GENERATED_BODY()
 
 public:
-    // ¾ÆÀÌÅÛ ÀÌ¸§
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
     FName ItemName;
-    // ¾î¶² ¾ÆÀÌÅÛ Å¬·¡½º¸¦ ½ºÆùÇÒÁö
+    // ï¿½î¶² ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
     TSubclassOf<AActor> ItemClass;
-    // ÀÌ ¾ÆÀÌÅÛÀÇ ½ºÆù È®·ü
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
     float SpawnChance;
 };

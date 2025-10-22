@@ -2,6 +2,7 @@
 
 
 #include "HealingItem.h"
+#include "SpartaMyCharacter.h"
 
 AHealingItem::AHealingItem()
 {
@@ -11,12 +12,16 @@ AHealingItem::AHealingItem()
 
 void AHealingItem::ActivateItem(AActor* Activator)
 {
-	// ÇÃ·¹ÀÌ¾î Ä³¸¯ÅÍÀÇ Ã¼·ÂÀ» 20¸¸Å­ È¸º¹½ÃÅ°´Â ·ÎÁ÷ µîÀ» ±¸Çö °¡´É
+	// ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½ï¿½ï¿½ 20ï¿½ï¿½Å­ È¸ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     if (Activator && Activator->ActorHasTag("Player"))
     {
-        // È¸º¹ µð¹ö±× ¸Þ½ÃÁö
+        // È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½
         GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("Player gained %d HP!"), HealAmount));
-
+		if (ASpartaMyCharacter* PlayerCharacter = Cast<ASpartaMyCharacter>(Activator))
+		{
+			// ìºë¦­í„°ì˜ ì²´ë ¥ì„ íšŒë³µ
+			PlayerCharacter->AddHealth(HealAmount);
+		}
         DestroyItem();
     }
 }

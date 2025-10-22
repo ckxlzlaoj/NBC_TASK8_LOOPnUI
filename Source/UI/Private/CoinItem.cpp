@@ -2,23 +2,31 @@
 
 
 #include "CoinItem.h"
+#include "Engine/World.h"
+#include "SpartaGameStateBase.h"
 
 ACoinItem::ACoinItem()
 {
-    // Á¡¼ö ±âº»°ªÀ» 0À¸·Î ¼³Á¤
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     PointValue = 0;
     ItemType = "DefaultCoin";
 }
 
 void ACoinItem::ActivateItem(AActor* Activator)
 {
-    // ÇÃ·¹ÀÌ¾î ÅÂ±× È®ÀÎ
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Â±ï¿½ È®ï¿½ï¿½
     if (Activator && Activator->ActorHasTag("Player"))
     {
-        // Á¡¼ö È¹µæ µð¹ö±× ¸Þ½ÃÁö
+        // ï¿½ï¿½ï¿½ï¿½ È¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½
         GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("Player gained %d points!"), PointValue));
-
-        // ºÎ¸ð Å¬·¡½º (BaseItem)¿¡ Á¤ÀÇµÈ ¾ÆÀÌÅÛ ÆÄ±« ÇÔ¼ö È£Ãâ
+        if (UWorld* World = GetWorld())
+        {
+            if (ASpartaGameStateBase* GameState = World->GetGameState<ASpartaGameStateBase>())
+            {
+                GameState->AddScore(PointValue);
+            }
+        }
+        // ï¿½Î¸ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ (BaseItem)ï¿½ï¿½ ï¿½ï¿½ï¿½Çµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½ ï¿½Ô¼ï¿½ È£ï¿½ï¿½
         DestroyItem();
     }
 }

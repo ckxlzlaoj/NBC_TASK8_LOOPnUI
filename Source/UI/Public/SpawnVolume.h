@@ -2,7 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "ItemSpawnRow.h"       // ¿ì¸®°¡ Á¤ÀÇÇÑ ±¸Á¶Ã¼
+#include "ItemSpawnRow.h"       // ï¿½ì¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¼
 #include "SpawnVolume.generated.h"
 
 class UBoxComponent;
@@ -16,7 +16,7 @@ public:
     ASpawnVolume();
 
     UFUNCTION(BlueprintCallable, Category = "Spawning")
-    void SpawnRandomItem();
+    AActor* SpawnRandomItem();
 
 protected:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Spawning")
@@ -27,7 +27,11 @@ protected:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Spawning")
     UDataTable* ItemDataTable;
 
+    UFUNCTION(BlueprintCallable, Category = "Spawning")
+    // ë¦¬í„´ í˜•ì‹ì„ AActor* ë¡œ ë³€ê²½
+
+
     FVector GetRandomPointInVolume() const;
     FItemSpawnRow* GetRandomItem() const;
-    void SpawnItem(TSubclassOf<AActor> ItemClass);
+    AActor* SpawnItem(TSubclassOf<AActor> ItemClass);
 };

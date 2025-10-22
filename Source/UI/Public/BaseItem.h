@@ -22,14 +22,14 @@ public:
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Item|Component")
 	USceneComponent* Scene;
-	// Ãæµ¹ ÄÄÆ÷³ÍÆ® (ÇÃ·¹ÀÌ¾î ÁøÀÔ ¹üÀ§ °¨Áö¿ë)
+	// ï¿½æµ¹ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® (ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Item|Component")
 	USphereComponent* Collision;
-	// ¾ÆÀÌÅÛ ½Ã°¢ Ç¥Çö¿ë ½ºÅÂÆ½ ¸Þ½Ã
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ½ ï¿½Þ½ï¿½
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Item|Component")
 	UStaticMeshComponent* StaticMesh;
 
-	// ÇÃ·¹ÀÌ¾î°¡ ÀÌ ¾ÆÀÌÅÛÀÇ ¹üÀ§¿¡ µé¾î¿ÔÀ» ¶§ È£Ãâ
+	// ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½
 	UFUNCTION()
 	virtual void OnItemOverlap(
 		UPrimitiveComponent* OverlappedComp,
@@ -38,7 +38,7 @@ protected:
 		int32 OtherBodyIndex,
 		bool bFromSweep,
 		const FHitResult& SweepResult) override;
-	// ÇÃ·¹ÀÌ¾î°¡ ÀÌ ¾ÆÀÌÅÛÀÇ ¹üÀ§¸¦ ¹þ¾î³µÀ» ¶§ È£Ãâ
+	// ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î³µï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½
 	UFUNCTION()
 	virtual void OnItemEndOverlap(
 		UPrimitiveComponent* OverlappedComp,
@@ -46,10 +46,10 @@ protected:
 		UPrimitiveComponent* OtherComp,
 		int32 OtherBodyIndex) override;
 
-	// ¾ÆÀÌÅÛÀÌ »ç¿ëµÇ¾úÀ» ¶§ È£Ãâ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½
 	virtual void ActivateItem(AActor* Activator) override;
 
-	// ÀÌ ¾ÆÀÌÅÛÀÇ À¯Çü(Å¸ÀÔ)À» ¹ÝÈ¯ (¿¹: "Coin", "Mine" µî)
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(Å¸ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½È¯ (ï¿½ï¿½: "Coin", "Mine" ï¿½ï¿½)
 	virtual FName GetItemType() const override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")

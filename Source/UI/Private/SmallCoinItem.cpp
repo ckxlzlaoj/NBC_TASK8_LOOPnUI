@@ -13,8 +13,8 @@ ASmallCoinItem::ASmallCoinItem()
 
 void ASmallCoinItem::ActivateItem(AActor* Activator)
 {
-	// ºÎ¸ðÀÇ ±âº» Á¡¼ö È¹µæ ·ÎÁ÷ »ç¿ë
+	// ï¿½Î¸ï¿½ï¿½ï¿½ ï¿½âº» ï¿½ï¿½ï¿½ï¿½ È¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	Super::ActivateItem(Activator);
 
-	DestroyItem(); // ¾ÆÀÌÅÛ ¼Ò¸ê(ºÎ¸ðÀÇ DestroyItem() È¤Àº ÀÚÃ¼ ·ÎÁ÷)
+	DestroyItem(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½(ï¿½Î¸ï¿½ï¿½ï¿½ DestroyItem() È¤ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½)
 }
